@@ -41,12 +41,15 @@
     "@nestjs/common": "^6.8.3",
     "@nestjs/core": "^6.8.3",
     "@nestjs/platform-express": "^6.8.3",
+    "@nestjs/typeorm": "^7.0.0",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "@nrwl/angular": "9.2.3",
     "bootstrap": "^4.4.0",
     "core-js": "^2.5.4",
+    "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
+    "typeorm": "^0.2.24",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
