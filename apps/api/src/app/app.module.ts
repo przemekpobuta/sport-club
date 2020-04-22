@@ -5,6 +5,8 @@ import { UsersModule } from './users/users.module';
 import { CategoryModule } from './category/category.module';
 import { PositionModule } from './position/position.module';
 import { TeamModule } from './team/team.module';
+import { EventModule } from './event/event.module';
+import { PlayersInTeamModule } from './playersinteam/playersinteam.module';
 
 @Module({
   imports: [
@@ -21,7 +23,9 @@ import { TeamModule } from './team/team.module';
     UsersModule,
     CategoryModule,
     PositionModule,
-    TeamModule
+    TeamModule,
+    PlayersInTeamModule,
+    EventModule
   ],
   controllers: [],
   providers: []
