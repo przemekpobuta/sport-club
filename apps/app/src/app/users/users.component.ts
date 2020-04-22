@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { CategoriesDataAccessService } from '../categories/categories-data-access.service';
 import { Category } from '../categories/category.interface';
+import { Position } from '../positions/position.interface';
 import { PositionsDataAccessService } from '../positions/positions-data-access.service';
 import { User } from './user.interface';
 import { UsersDataAccessService } from './users-data-access.service';

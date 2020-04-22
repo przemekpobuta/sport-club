@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { UsersModule } from './users/users.module';
 import { CategoryModule } from './category/category.module';
 import { PositionModule } from './position/position.module';
 import { TeamModule } from './team/team.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -18,8 +18,8 @@ import { TeamModule } from './team/team.module';
       autoLoadEntities: true,
       synchronize: true
     }),
-    UsersModule,
     CategoryModule,
+    UsersModule,
     PositionModule,
     TeamModule
   ],

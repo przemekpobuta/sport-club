@@ -1,6 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 
 import { RestService } from '../utils/rest.service';
+import { Position } from './position.interface';
 
 @Injectable({
   providedIn: 'root'

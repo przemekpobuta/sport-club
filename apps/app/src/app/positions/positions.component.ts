@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { CrudComponent } from '../utils/crud.component';
+import { Position } from './position.interface';
 import { PositionsDataAccessService } from './positions-data-access.service';
 
 @Component({

@@ -1,9 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+
+import { Category } from '../category/category.entity';
+import { Position } from '../position/position.entity';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  userId: number;
+  id: number;
 
   @Column()
   firstName: string;
@@ -11,9 +14,9 @@ export class User {
   @Column()
   lastName: string;
 
-  @Column()
-  categoryId: number;
+  @ManyToOne('Category', 'users')
+  category: Category;
 
-  @Column()
-  positionId: number;
+  @ManyToOne('Position', 'users')
+  position: Position;
 }
