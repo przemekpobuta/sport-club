@@ -5,29 +5,28 @@ import { Category } from './category.entity';
 import { CreateCategoryDto } from './dto/create-category.dto';
 
 @Injectable()
-export class categoryService {
+export class CategoryService {
   constructor(
     @InjectRepository(Category)
     private readonly categoryRepository: Repository<Category>
   ) {}
 
   create(createCategoryDto: CreateCategoryDto): Promise<Category> {
-    const user = new Category();
-    user.firstName = createCategoryDto.firstName;
-    user.lastName = createCategoryDto.lastName;
+    const category = new Category();
+    category.name = createCategoryDto.name;
 
-    return this.categoryRepository.save(user);
+    return this.categoryRepository.save(category);
   }
 
   async findAll(): Promise<Category[]> {
     return this.categoryRepository.find();
   }
 
-  findOne(userId: string): Promise<Category> {
-    return this.categoryRepository.findOne(userId);
+  findOne(categoryId: string): Promise<Category> {
+    return this.categoryRepository.findOne(categoryId);
   }
 
-  async remove(userId: string): Promise<void> {
-    await this.categoryRepository.delete(userId);
+  async remove(categoryId: string): Promise<void> {
+    await this.categoryRepository.delete(categoryId);
   }
 }

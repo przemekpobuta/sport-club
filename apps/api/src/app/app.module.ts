@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { UsersModule } from './users/users.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { UsersModule } from './users/users.module';
       autoLoadEntities: true,
       synchronize: true
     }),
-    UsersModule
+    UsersModule,
+    CategoryModule
   ],
   controllers: [],
   providers: []
