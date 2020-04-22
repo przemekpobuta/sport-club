@@ -20,8 +20,27 @@
         />
       </div>
     </div>
+    <div class="col-3">
+      <div class="form-group">
+        <select formControlName="categoryId" class="custom-select">
+          <option [value]="''" selected disabled>Wybierz dyscyplinę</option>
+          <option
+            *ngFor="let category of categories$ | async"
+            [value]="category.categoryId"
+          >
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+    </div>
     <div class="col-1">
-      <button type="submit" class="btn btn-primary">Utwórz</button>
+      <button
+        [disabled]="formGroup.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Utwórz
+      </button>
     </div>
   </div>
 </form>
