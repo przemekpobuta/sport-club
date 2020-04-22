@@ -1,5 +1,11 @@
 # SportClub Full Stack Application
 
+## Requirements:
+
+- Node.js
+
+## Run application and server:
+
 1. Install dependencies `npm install`
 2. `npm i -g @angular/cli`
 3. Serve app `ng serve app`
