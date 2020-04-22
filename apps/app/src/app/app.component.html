@@ -1,8 +1,24 @@
-<div style="text-align:center">
-  <h1>Welcome to app!</h1>
-  <img
-    width="450"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png"
-  />
-</div>
-<div>Message: {{ hello$ | async | json }}</div>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand">Sport Club</a>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/users">Użytkownicy</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/teams">Zespoły</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/events">Zawody</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main role="main" class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</main>
