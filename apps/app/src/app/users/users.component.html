@@ -28,10 +28,38 @@
 
 <div *ngIf="{ users: users$ | async } as data">
   <h3>List użytkowników</h3>
-  <ul>
-    <li *ngFor="let user of data.users">
-      {{ user.firstName + ' ' + user.lastName }}
-    </li>
-  </ul>
-  <p *ngIf="!data?.users?.length">Brak użytkowników</p>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Imię</th>
+        <th scope="col">Nazwisko</th>
+        <th scope="col">Kategoria</th>
+        <th scope="col">Stanowisko</th>
+        <th scope="col">Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of data.users">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user?.category }}</td>
+        <td>{{ user?.position }}</td>
+        <td>
+          <button
+            (click)="deleteUser(user.userId)"
+            type="button"
+            class="btn btn-danger"
+          >
+            Usuń
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" *ngIf="!data?.users?.length">
+          Brak użytkowników
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
