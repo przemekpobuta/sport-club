@@ -1,1 +1,97 @@
-<p>teams works!</p>
+<h3>Utwórz zespół</h3>
+
+<form [formGroup]="formGroup" (ngSubmit)="submit()">
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <select formControlName="categoryId" class="custom-select">
+          <option [value]="''" selected disabled>Wybierz dyscyplinę</option>
+          <option
+            *ngFor="let category of categories$ | async"
+            [value]="category.id"
+          >
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <select formControlName="positionId" class="custom-select">
+          <option [value]="''" selected disabled>Wybierz trenera</option>
+          <ng-container *ngFor="let user of users$ | async">
+            <option *ngIf="user.position.name === 'Trener'" [value]="user.id">
+              {{ user.firstName + ' ' + user.lastName }}
+            </option>
+          </ng-container>
+        </select>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group">
+        <ul>
+          <li *ngFor="let player of playersControls; let i = index">
+            <label formArrayName="players">
+              <input type="checkbox" [formControlName]="i" />
+              {{
+                availablePlayers[i].firstName +
+                  ' ' +
+                  availablePlayers[i].lastName
+              }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-1">
+      <button
+        [disabled]="formGroup.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Utwórz
+      </button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="{ entities: entities$ | async } as data">
+  <h3>List zespołów</h3>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Nazwa zespołu</th>
+        <th scope="col">Członkowie zespołu</th>
+        <th scope="col">Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entity of data.entities">
+        <td>{{ entity.name }}</td>
+        <td>
+          {{ entity.users }}
+          <ul>
+            <li *ngFor="let user of entity.users">
+              {{ user.firstName + ' ' + user.lastName }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button
+            (click)="delete(entity.categoryId)"
+            type="button"
+            class="btn btn-danger"
+          >
+            Usuń
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" *ngIf="!data?.entities?.length">
+          Brak zespołów
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

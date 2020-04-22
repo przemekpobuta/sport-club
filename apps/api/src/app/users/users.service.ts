@@ -37,7 +37,7 @@ export class UsersService {
   }
 
   findOne(userId: string): Promise<User> {
-    return this.usersRepository.findOne(userId);
+    return this.usersRepository.findOne(userId, { relations: ['position'] });
   }
 
   async remove(userId: string): Promise<void> {

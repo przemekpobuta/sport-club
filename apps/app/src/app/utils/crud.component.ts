@@ -23,7 +23,10 @@ export abstract class CrudComponent<
 
   submit(): void {
     if (this.formGroup.valid) {
-      this._dataAccessService.post(this.formGroup.value).subscribe(() => {
+      const values = this.processFormGroupValueBeforeSubmit(
+        this.formGroup.value
+      );
+      this._dataAccessService.post(values).subscribe(() => {
         this.formGroup.reset();
         this.getList();
       });
@@ -34,5 +37,9 @@ export abstract class CrudComponent<
     this._dataAccessService.delete(id).subscribe(() => {
       this.getList();
     });
+  }
+
+  protected processFormGroupValueBeforeSubmit(object: TYPE): TYPE {
+    return object;
   }
 }
