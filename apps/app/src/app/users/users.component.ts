@@ -38,4 +38,10 @@ export class UsersComponent implements OnInit {
       });
     }
   }
+
+  deleteUser(id: number): void {
+    this.usersDataAccessService.delete(id).subscribe(() => {
+      this.getUsers();
+    });
+  }
 }
