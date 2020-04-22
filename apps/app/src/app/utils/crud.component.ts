@@ -24,6 +24,7 @@ export abstract class CrudComponent<
   submit(): void {
     if (this.formGroup.valid) {
       this._dataAccessService.post(this.formGroup.value).subscribe(() => {
+        this.formGroup.reset();
         this.getList();
       });
     }

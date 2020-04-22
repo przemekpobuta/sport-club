@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { CategoriesDataAccessService } from '../categories/categories-data-access.service';
 import { Category } from '../categories/category.interface';
+import { PositionsDataAccessService } from '../positions/positions-data-access.service';
 import { User } from './user.interface';
 import { UsersDataAccessService } from './users-data-access.service';
 
@@ -15,11 +16,13 @@ import { UsersDataAccessService } from './users-data-access.service';
 export class UsersComponent implements OnInit {
   users$: Observable<User[]>;
   categories$: Observable<Category[]>;
+  positions$: Observable<Position[]>;
   formGroup: FormGroup;
 
   constructor(
     private usersDataAccessService: UsersDataAccessService,
     private categoriesDataAccessService: CategoriesDataAccessService,
+    private positionsDataAccessService: PositionsDataAccessService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -27,10 +30,12 @@ export class UsersComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      categoryId: ['', Validators.required]
+      categoryId: ['', Validators.required],
+      positionId: ['', Validators.required]
     });
     this.getUsers();
     this.categories$ = this.categoriesDataAccessService.getAll();
+    this.positions$ = this.positionsDataAccessService.getAll();
   }
 
   getUsers(): void {
