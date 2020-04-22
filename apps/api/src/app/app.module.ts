@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { UsersModule } from './users/users.module';
 import { CategoryModule } from './category/category.module';
+import { PositionModule } from './position/position.module';
+import { TeamModule } from './team/team.module';
 
 @Module({
   imports: [
@@ -17,7 +19,9 @@ import { CategoryModule } from './category/category.module';
       synchronize: true
     }),
     UsersModule,
-    CategoryModule
+    CategoryModule,
+    PositionModule,
+    TeamModule
   ],
   controllers: [],
   providers: []
