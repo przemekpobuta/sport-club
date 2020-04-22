@@ -2,11 +2,11 @@ import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { Category } from './category.entity';
-import { categoryService } from './category.service';
+import { CategoryService } from './category.service';
 
 @Controller('category')
-export class categoryController {
-  constructor(private readonly categoryService: categoryService) {}
+export class CategoryController {
+  constructor(private readonly categoryService: CategoryService) {}
 
   @Post()
   create(@Body() createCategoryDto: CreateCategoryDto): Promise<Category> {
@@ -18,13 +18,13 @@ export class categoryController {
     return this.categoryService.findAll();
   }
 
-  @Get(':userId')
-  findOne(@Param('userId') id: string): Promise<Category> {
+  @Get(':categoryId')
+  findOne(@Param('categoryId') id: string): Promise<Category> {
     return this.categoryService.findOne(id);
   }
 
-  @Delete(':userId')
-  remove(@Param('userId') id: string): Promise<void> {
+  @Delete(':categoryId')
+  remove(@Param('categoryId') id: string): Promise<void> {
     return this.categoryService.remove(id);
   }
 }

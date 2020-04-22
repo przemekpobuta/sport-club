@@ -16,6 +16,8 @@ export class UsersService {
     const user = new User();
     user.firstName = createUserDto.firstName;
     user.lastName = createUserDto.lastName;
+    user.categoryId = createUserDto.categoryId;
+    user.positionId = createUserDto.positionId;
 
     return this.usersRepository.save(user);
   }
