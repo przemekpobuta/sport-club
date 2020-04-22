@@ -1,8 +1,9 @@
 # SportClub Full Stack Application
 
 1. Install dependencies `npm install`
-2. Serve app `ng serve app`
-3. Serve api `ng serve api`
+2. `npm i -g @angular/cli`
+3. Serve app `ng serve app`
+4. Serve api `ng serve api`
 
 ## Quick Start & Documentation
 
