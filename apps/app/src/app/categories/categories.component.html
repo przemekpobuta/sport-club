@@ -1,0 +1,56 @@
+<h3>Utwórz dyscyplinę</h3>
+
+<form [formGroup]="formGroup" (ngSubmit)="submit()">
+  <div class="row">
+    <div class="col-3">
+      <div class="form-group">
+        <input
+          formControlName="name"
+          class="form-control"
+          placeholder="Nazwa dyscypliny"
+        />
+      </div>
+    </div>
+    <div class="col-1">
+      <button
+        [disabled]="formGroup.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Utwórz
+      </button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="{ entities: entities$ | async } as data">
+  <h3>List dyscyplin</h3>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Nazwa dyscypliny</th>
+        <th scope="col">Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entity of data.entities">
+        <td>{{ entity.name }}</td>
+        <td>
+          <button
+            (click)="delete(entity.categoryId)"
+            type="button"
+            class="btn btn-danger"
+          >
+            Usuń
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" *ngIf="!data?.entities?.length">
+          Brak dyscyplin
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -3,7 +3,7 @@ import { Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-interface RestServiceInterface<T, ID> {
+export interface RestServiceInterface<T, ID> {
   getAll(): Observable<T[]>;
   post(item: T): Observable<T>;
   get(id: ID): Observable<T>;
