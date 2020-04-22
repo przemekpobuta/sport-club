@@ -1,1 +1,37 @@
-<p>users works!</p>
+<h3>Utwórz użytkownika</h3>
+
+<form [formGroup]="formGroup" (ngSubmit)="submitCreateUser()">
+  <div class="row">
+    <div class="col-3">
+      <div class="form-group">
+        <input
+          formControlName="firstName"
+          class="form-control"
+          placeholder="Imię"
+        />
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <input
+          formControlName="lastName"
+          class="form-control"
+          placeholder="Nazwisko"
+        />
+      </div>
+    </div>
+    <div class="col-1">
+      <button type="submit" class="btn btn-primary">Utwórz</button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="{ users: users$ | async } as data">
+  <h3>List użytkowników</h3>
+  <ul>
+    <li *ngFor="let user of data.users">
+      {{ user.firstName + ' ' + user.lastName }}
+    </li>
+  </ul>
+  <p *ngIf="!data?.users?.length">Brak użytkowników</p>
+</div>
