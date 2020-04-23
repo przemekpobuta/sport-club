@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
+import { Team } from '../team/team.entity';
 import { User } from '../users/user.entity';
 
 @Entity()
@@ -12,4 +13,7 @@ export class Category {
 
   @OneToMany('User', 'category')
   users: User[];
+
+  @OneToMany('Team', 'category')
+  teams: Team[];
 }

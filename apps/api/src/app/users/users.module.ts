@@ -10,6 +10,7 @@ import { UsersService } from './users.service';
 @Module({
   imports: [TypeOrmModule.forFeature([User]), PositionModule, CategoryModule],
   providers: [UsersService],
-  controllers: [UsersController]
+  controllers: [UsersController],
+  exports: [TypeOrmModule]
 })
 export class UsersModule {}

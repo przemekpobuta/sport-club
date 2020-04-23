@@ -61,14 +61,18 @@
   <table class="table">
     <thead class="thead-light">
       <tr>
-        <th scope="col">Nazwa zespołu</th>
+        <th scope="col">ID zespołu</th>
+        <th scope="col">Trener</th>
+        <th scope="col">Kategoria</th>
         <th scope="col">Członkowie zespołu</th>
         <th scope="col">Akcje</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let entity of data.entities">
-        <td>{{ entity.name }}</td>
+        <td>{{ entity.id }}</td>
+        <td>{{ entity.user?.firstName + ' ' + entity.user?.lastName }}</td>
+        <td>{{ entity.category?.name }}</td>
         <td>
           {{ entity.users }}
           <ul>
@@ -79,7 +83,7 @@
         </td>
         <td>
           <button
-            (click)="delete(entity.categoryId)"
+            (click)="delete(entity.id)"
             type="button"
             class="btn btn-danger"
           >
