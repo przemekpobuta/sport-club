@@ -1,5 +1,6 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 
+import { Category } from '../category/category.entity';
 import { User } from '../users/user.entity';
 
 @Entity()
@@ -7,13 +8,13 @@ export class Team {
   @PrimaryGeneratedColumn()
   teamId: number;
 
-  @Column()
-  categoryId: number;
+  @ManyToOne('Category', 'teams')
+  category: Category;
 
-  @Column()
-  coachId: number;
-
-  @ManyToMany('Users')
-  @JoinTable()
-  players: User[];
+  @ManyToOne('User', 'teams')
+  coachId: User;
+  // One to many players - - - not working yet
+  //  @ManyToMany('Users')
+  //  @JoinTable()
+  //  players: User[];
 }
